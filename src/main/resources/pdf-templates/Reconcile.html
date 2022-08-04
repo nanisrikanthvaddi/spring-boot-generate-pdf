@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        h1{
+            color: blue;
+        }
+        .quotation {
+            width: 100%;
+        }
+        .quotation, .quotation th, .quotation td {
+            border: 1px solid blue;
+            border-collapse: collapse;
+        }
+        .quotation th {
+            background-color: #5b6ac7;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>Reconcile Report</h1>
+<table>
+    <tr>
+        <th>Reconcile Details </th>
+    </tr>
+    <tr>
+        <td>ReconcileReport Date: 04/08/2022 </td>
+    </tr>
+    <tr>
+        <td>ReconcileRecords Date: 03/08/2022</td>
+    </tr>
+    <tr>
+        <td th:text="'Total Records :'+ ${reconcile.size}"></td>
+    </tr>
+
+</table>
+<br />
+<table class="quotation">
+    <tr>
+        <th>item1 #</th>
+        <th>Customer Id #</th>
+
+        <th>Txn Id #</th>
+        <th>Txn Source</th>
+        <th>txn Amount</th>
+        <th>Merhcant Id</th>
+        <th>Merchant Name</th>
+    </tr>
+    <tr th:each="item,reconcileStat: ${reconcile}">
+        <td th:text="${reconcileStat.index + 1}"></td>
+        <td th:text="${item.customerId}"></td>
+
+        <td th:text="${item.txnId}"></td>
+        <td th:text="${item.txnSource}"></td>
+        <td th:text="${item.txnAmount}"></td>
+        <td th:text="${item.merchantId}"></td>
+        <td th:text="${item.merchantName}"></td>
+    </tr>
+</table>
+</body>
+</html>
